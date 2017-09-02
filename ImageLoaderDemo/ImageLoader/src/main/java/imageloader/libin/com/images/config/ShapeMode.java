@@ -1,7 +1,10 @@
 package imageloader.libin.com.images.config;
 
 /**
- * Created by doudou on 2017/4/10.
+ * @author JeremyHwc;
+ * @date 2017/9/2/002 15:06;
+ * @email jeremy_hwc@163.com ;
+ * @desc
  */
 
 public interface ShapeMode {

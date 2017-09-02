@@ -1,7 +1,10 @@
 package imageloader.libin.com.images.config;
 
 /**
- * Created by doudou on 2017/4/25.
+ * @author JeremyHwc;
+ * @date 2017/9/2/002 14:32;
+ * @email jeremy_hwc@163.com ;
+ * @desc 优先级模式
  */
 
 public interface PriorityMode {

@@ -225,7 +225,6 @@ public class ImageUtil {
                 newUrl = GlobalConfig.baseUrl + url;
             }
         }
-
         return newUrl;
     }
 

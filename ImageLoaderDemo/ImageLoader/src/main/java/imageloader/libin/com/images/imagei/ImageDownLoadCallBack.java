@@ -3,7 +3,10 @@ package imageloader.libin.com.images.imagei;
 import android.graphics.Bitmap;
 
 /**
- * Created by doudou on 2017/5/2.
+ * @author JeremyHwc;
+ * @date 2017/9/2/002 15:07;
+ * @email jeremy_hwc@163.com ;
+ * @desc 图片下载回调
  */
 
 public interface ImageDownLoadCallBack {

@@ -17,7 +17,6 @@ public class ViewpagerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewpager);
-
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         List<String> urls = new ArrayList<>();
        /* urls.add("/storage/emulated/0/DCIM/家里有用图/IMG_20170222_221249_HHT.jpg");

@@ -48,6 +48,7 @@ public class ImageLoader {
 
     /**
      * 获取当前的Loader
+     *
      * @return ILoader
      */
     public static ILoader getActualLoader() {
@@ -64,10 +65,18 @@ public class ImageLoader {
         return new SingleConfig.ConfigBuilder(context);
     }
 
+    /**
+     * 程序在内存清理的时候执行
+     *
+     * @param level
+     */
     public static void trimMemory(int level) {
         getActualLoader().trimMemory(level);
     }
 
+    /**
+     * 低内存的时候执行
+     */
     public static void clearAllMemoryCaches() {
         getActualLoader().clearAllMemoryCaches();
     }
@@ -77,9 +86,11 @@ public class ImageLoader {
      */
     public static void pauseRequests() {
         getActualLoader().pause();
-
     }
 
+    /**
+     * 恢复请求
+     */
     public static void resumeRequests() {
         getActualLoader().resume();
     }
@@ -96,10 +107,7 @@ public class ImageLoader {
 
     /**
      * Clears disk cache.
-     * <p>
-     * <p>
      * This method should always be called on a background thread, since it is a blocking call.
-     * </p>
      */
     public static void clearDiskCache() {
         getActualLoader().clearDiskCache();

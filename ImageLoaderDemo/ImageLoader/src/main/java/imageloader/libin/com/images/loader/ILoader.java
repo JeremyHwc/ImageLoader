@@ -9,7 +9,10 @@ import imageloader.libin.com.images.config.SingleConfig;
 import imageloader.libin.com.images.utils.DownLoadImageService;
 
 /**
- * Created by doudou on 2017/4/10.
+ * @author JeremyHwc;
+ * @date 2017/9/2/002 14:36;
+ * @email jeremy_hwc@163.com ;
+ * @desc
  */
 
 public interface ILoader {
@@ -24,7 +27,7 @@ public interface ILoader {
     void pause();
 
     /**
-     * 回复的请求（当列表在滑动的时候，调用pauseRequests()取消请求，滑动停止时，
+     * 恢复请求（当列表在滑动的时候，调用pauseRequests()取消请求，滑动停止时，
      * 调用resumeRequests()恢复请求 等等）
      */
     void resume();
