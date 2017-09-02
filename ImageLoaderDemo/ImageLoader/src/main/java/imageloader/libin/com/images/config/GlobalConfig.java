@@ -41,12 +41,9 @@ public class GlobalConfig {
     public static boolean ignoreCertificateVerify = false;
 
     public static void init(Context context, int cacheSizeInM, MemoryCategory memoryCategory, boolean isInternalCD) {
-
         GlobalConfig.context = context;
         GlobalConfig.cacheMaxSize = cacheSizeInM;
-        WindowManager wm = (WindowManager) context
-                .getSystemService(Context.WINDOW_SERVICE);
-
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         GlobalConfig.winWidth = wm.getDefaultDisplay().getWidth();
         GlobalConfig.winHeight = wm.getDefaultDisplay().getHeight();
         getLoader().init(context, cacheSizeInM, memoryCategory, isInternalCD);
@@ -63,16 +60,12 @@ public class GlobalConfig {
     }
 
     private static ILoader loader;
-
     public static ILoader getLoader() {
-
         if (loader == null) {
             loader = new GlideLoader();
         }
-
         return loader;
     }
-
 
     public static int getWinHeight() {
         if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {

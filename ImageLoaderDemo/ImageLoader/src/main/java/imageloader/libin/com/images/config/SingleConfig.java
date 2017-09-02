@@ -14,7 +14,10 @@ import java.io.File;
 import imageloader.libin.com.images.utils.ImageUtil;
 
 /**
- * Created by doudou on 2017/4/10.
+ * @author JeremyHwc;
+ * @date 2017/9/2/002 10:22;
+ * @desc 图片的各种设置信息;
+ * @email jeremy_hwc@163.com .
  */
 
 public class SingleConfig {
@@ -422,6 +425,7 @@ public class SingleConfig {
         private int shapeMode;//默认矩形,可选直角矩形,圆形/椭圆
         private int rectRoundRadius;//圆角矩形时圆角的半径
 
+
         private DiskCacheStrategy diskCacheStrategy;
 
         private int scaleMode;//填充模式,默认centercrop,可选fitXY,centerInside...
@@ -446,6 +450,7 @@ public class SingleConfig {
 
         /**
          * 缩略图
+         * 缩略图
          *
          * @param thumbnail
          * @return
@@ -468,6 +473,7 @@ public class SingleConfig {
 
         /**
          * 设置网络路径
+         * 支持filepath、图片链接、contenProvider、资源id四种
          *
          * @param url
          * @return
@@ -580,11 +586,19 @@ public class SingleConfig {
             return this;
         }
 
+        /**
+         * 展示到imageview
+         * @param targetView
+         */
         public void into(View targetView) {
             this.target = targetView;
             new SingleConfig(this).show();
         }
 
+        /**
+         * 使用bitmap不显示到imageview
+         * @param bitmapListener
+         */
         public void asBitmap(BitmapListener bitmapListener) {
             this.bitmapListener = ImageUtil.getBitmapListenerProxy(bitmapListener);
             this.asBitmap = true;
@@ -628,8 +642,8 @@ public class SingleConfig {
         }
 
         /**
-         * 圆角
-
+         * 加载圆形图片
+         *
          * @return
          */
         public ConfigBuilder asCircle() {
@@ -651,7 +665,7 @@ public class SingleConfig {
 
 
         /**
-         * 正方形
+         * 形状为正方形
          *
          * @return
          */
@@ -663,6 +677,13 @@ public class SingleConfig {
 
         /**
          * 磁盘缓存
+         * 1.DiskCacheStrategy.NONE :不缓存图片
+         * 2.DiskCacheStrategy.SOURCE :缓存图片源文件
+         * 3.DiskCacheStrategy.RESULT:缓存修改过的图片
+         * 4.DiskCacheStrategy.ALL:缓存所有的图片，默认
+         *
+         * @param diskCacheStrategy
+         * @return
          */
         public ConfigBuilder diskCacheStrategy(DiskCacheStrategy diskCacheStrategy) {
             this.diskCacheStrategy = diskCacheStrategy;
@@ -671,8 +692,10 @@ public class SingleConfig {
 
         /**
          * 拉伸/裁剪模式
+         * 默认：FIT_CENTER
          *
-         * @param scaleMode 取值ScaleMode
+         * @param scaleMode 1、CENTER_CROP等比例缩放图片，直到图片的宽高都大于等于ImageView的宽度，然后截取中间的显示 ;
+         *                  2、FIT_CENTER 等比例缩放图片，宽或者是高等于ImageView的宽或者是高
          * @return
          */
         public ConfigBuilder scale(int scaleMode) {
@@ -681,18 +704,33 @@ public class SingleConfig {
         }
 
 
+        /**
+         * 引入动画
+         * @param animationId
+         * @return
+         */
         public ConfigBuilder animate(int animationId) {
             this.animationType = AnimationMode.ANIMATIONID;
             this.animationId = animationId;
             return this;
         }
 
+        /**
+         * 引入动画
+         * @param animator
+         * @return
+         */
         public ConfigBuilder animate(ViewPropertyAnimation.Animator animator) {
             this.animationType = AnimationMode.ANIMATOR;
             this.animator = animator;
             return this;
         }
 
+        /**
+         * 引入动画
+         * @param animation
+         * @return
+         */
         public ConfigBuilder animate(Animation animation) {
             this.animationType = AnimationMode.ANIMATION;
             this.animation = animation;
@@ -705,60 +743,109 @@ public class SingleConfig {
             return this;
         }
 
+        /**
+         * 颜色滤镜
+         *
+         * @param filteColor
+         * @return
+         */
         public ConfigBuilder colorFilter(int filteColor) {
             this.filteColor = filteColor;
             this.needFilteColor = true;
             return this;
         }
 
+        /**
+         * 调节图片亮度
+         * @param level
+         * @return
+         */
         public ConfigBuilder brightnessFilter(float level) {
             this.isNeedBrightness = true;
             this.brightnessLeve = level;
             return this;
         }
 
+        /**
+         * 黑白效果
+         * @return
+         */
         public ConfigBuilder grayscaleFilter() {
             this.isNeedGrayscale = true;
             return this;
         }
 
+        /**
+         * 漩涡效果
+         * @return
+         */
         public ConfigBuilder swirlFilter() {
             this.isNeedSwirl = true;
             return this;
         }
 
+        /**
+         * 油画效果
+         * @return
+         */
         public ConfigBuilder toonFilter() {
             this.isNeedToon = true;
             return this;
         }
 
+        /**
+         * 水墨画效果
+         * @return
+         */
         public ConfigBuilder sepiaFilter() {
             this.isNeedSepia = true;
             return this;
         }
 
+        /**
+         * 锐化效果
+         * @param constrasrLevel
+         * @return
+         */
         public ConfigBuilder contrastFilter(float constrasrLevel) {
             this.contrastLevel = constrasrLevel;
             this.isNeedContrast = true;
             return this;
         }
 
+        /**
+         * 胶片效果
+         * @return
+         */
         public ConfigBuilder invertFilter() {
             this.isNeedInvert = true;
             return this;
         }
 
+        /**
+         * 马赛克效果
+         * @param pixelationLevel
+         * @return
+         */
         public ConfigBuilder pixelationFilter(float pixelationLevel) {
             this.pixelationLevel = pixelationLevel;
             this.isNeedPixelation = true;
             return this;
         }
 
+        /**
+         * 素描效果
+         * @return
+         */
         public ConfigBuilder sketchFilter() {
             this.isNeedSketch = true;
             return this;
         }
 
+        /**
+         * 晕映效果
+         * @return
+         */
         public ConfigBuilder vignetteFilter() {
             this.isNeedVignette = true;
             return this;

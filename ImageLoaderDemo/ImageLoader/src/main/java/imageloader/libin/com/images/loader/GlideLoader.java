@@ -48,11 +48,11 @@ import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation;
 
 
 /**
- * Created by doudou on 2017/4/10.
- * 参考:
- * https://mrfu.me/2016/02/28/Glide_Sries_Roundup/
+ * @author JeremyHwc;
+ * @date 2017/9/2/002 10:45;
+ * @email jeremy_hwc@163.com ;
+ * @desc GlideLoader GlideLoader实现ILoader接口;
  */
-
 public class GlideLoader implements ILoader {
 
     /**
@@ -144,7 +144,7 @@ public class GlideLoader implements ILoader {
                 request.error(config.getErrorResId());
             }
 
-            if(config.isGif()){
+            if (config.isGif()) {
                 request.asGif();
             }
 
@@ -203,25 +203,25 @@ public class GlideLoader implements ILoader {
         DrawableTypeRequest request = null;
         if (!TextUtils.isEmpty(config.getUrl())) {
             request = requestManager.load(ImageUtil.appendUrl(config.getUrl()));
-            Log.e("TAG","getUrl : "+config.getUrl());
+            Log.e("GlideLoader", "getUrl : " + config.getUrl());
         } else if (!TextUtils.isEmpty(config.getFilePath())) {
             request = requestManager.load(ImageUtil.appendUrl(config.getFilePath()));
-            Log.e("TAG","getFilePath : "+config.getFilePath());
+            Log.e("GlideLoader", "getFilePath : " + config.getFilePath());
         } else if (!TextUtils.isEmpty(config.getContentProvider())) {
             request = requestManager.loadFromMediaStore(Uri.parse(config.getContentProvider()));
-            Log.e("TAG","getContentProvider : "+config.getContentProvider());
+            Log.e("GlideLoader", "getContentProvider : " + config.getContentProvider());
         } else if (config.getResId() > 0) {
             request = requestManager.load(config.getResId());
-            Log.e("TAG","getResId : "+config.getResId());
-        } else if(config.getFile() != null){
+            Log.e("GlideLoader", "getResId : " + config.getResId());
+        } else if (config.getFile() != null) {
             request = requestManager.load(config.getFile());
-            Log.e("TAG","getFile : "+config.getFile());
-        } else if(!TextUtils.isEmpty(config.getAssertspath())){
+            Log.e("GlideLoader", "getFile : " + config.getFile());
+        } else if (!TextUtils.isEmpty(config.getAssertspath())) {
             request = requestManager.load(config.getAssertspath());
-            Log.e("TAG","getAssertspath : "+config.getAssertspath());
-        } else if(!TextUtils.isEmpty(config.getRawPath())){
+            Log.e("GlideLoader", "getAssertspath : " + config.getAssertspath());
+        } else if (!TextUtils.isEmpty(config.getRawPath())) {
             request = requestManager.load(config.getRawPath());
-            Log.e("TAG","getRawPath : "+config.getRawPath());
+            Log.e("GlideLoader", "getRawPath : " + config.getRawPath());
         }
         return request;
     }
@@ -284,18 +284,18 @@ public class GlideLoader implements ILoader {
         }
 
         if (config.isNeedPixelation()) {
-            transformation[count] =new PixelationFilterTransformation(config.getContext(), config.getPixelationLevel()); //马赛克
+            transformation[count] = new PixelationFilterTransformation(config.getContext(), config.getPixelationLevel()); //马赛克
             count++;
         }
 
         if (config.isNeedSketch()) {
-            transformation[count] =new SketchFilterTransformation(config.getContext()); //素描
+            transformation[count] = new SketchFilterTransformation(config.getContext()); //素描
             count++;
         }
 
         if (config.isNeedVignette()) {
-            transformation[count] =new VignetteFilterTransformation(config.getContext(), new PointF(0.5f, 0.5f),
-                    new float[] { 0.0f, 0.0f, 0.0f }, 0f, 0.75f);//晕映
+            transformation[count] = new VignetteFilterTransformation(config.getContext(), new PointF(0.5f, 0.5f),
+                    new float[]{0.0f, 0.0f, 0.0f}, 0f, 0.75f);//晕映
             count++;
         }
 

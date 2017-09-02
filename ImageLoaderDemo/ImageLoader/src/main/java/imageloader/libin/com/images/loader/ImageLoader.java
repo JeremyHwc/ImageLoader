@@ -3,7 +3,6 @@ package imageloader.libin.com.images.loader;
 import android.content.Context;
 import android.view.View;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.MemoryCategory;
 
 import imageloader.libin.com.images.config.GlobalConfig;
@@ -11,15 +10,18 @@ import imageloader.libin.com.images.config.SingleConfig;
 import imageloader.libin.com.images.utils.DownLoadImageService;
 
 /**
- * Created by doudou on 2017/4/19.
+ * @author JeremyHwc;
+ * @date 2017/9/2/002 10:02;
+ * @desc ImageLoader是封装好所有的方法供用户使用的;
+ * @email jeremy_hwc@163.com .
  */
-
 public class ImageLoader {
     public static Context context;
     /**
      * 默认最大缓存
      */
     public static int CACHE_IMAGE_SIZE = 250;
+
 
     public static void init(final Context context) {
         init(context, CACHE_IMAGE_SIZE);
@@ -46,7 +48,7 @@ public class ImageLoader {
 
     /**
      * 获取当前的Loader
-     * @return
+     * @return ILoader
      */
     public static ILoader getActualLoader() {
         return GlobalConfig.getLoader();
@@ -70,6 +72,9 @@ public class ImageLoader {
         getActualLoader().clearAllMemoryCaches();
     }
 
+    /**
+     * 取消请求
+     */
     public static void pauseRequests() {
         getActualLoader().pause();
 
@@ -80,7 +85,8 @@ public class ImageLoader {
     }
 
     /**
-     *Cancel any pending loads Glide may have for the view and free any resources that may have been loaded for the view.
+     * Cancel any pending loads Glide may have for the view and free any resources that may have been loaded for the view.
+     *
      * @param view
      */
     public static void clearMomoryCache(View view) {
@@ -90,9 +96,9 @@ public class ImageLoader {
 
     /**
      * Clears disk cache.
-     *
      * <p>
-     *     This method should always be called on a background thread, since it is a blocking call.
+     * <p>
+     * This method should always be called on a background thread, since it is a blocking call.
      * </p>
      */
     public static void clearDiskCache() {
